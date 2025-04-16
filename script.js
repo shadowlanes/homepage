@@ -236,10 +236,18 @@ function initDataFlow() {
         return positions;
     }
     
+    // Check if we're on a mobile device
+    function isMobileView() {
+        return window.innerWidth <= 900;
+    }
+    
     // Create and animate a single data packet
     function createDataPacket() {
         const container = document.querySelector('.system-container');
         const componentPositions = getComponentPositions();
+        const isMobile = isMobileView();
+        
+        if (componentPositions.length === 0) return; // Safety check
         
         // Create the data packet element
         const packet = document.createElement('div');
@@ -247,23 +255,47 @@ function initDataFlow() {
         
         // Initial styling - JSON-like appearance
         packet.innerHTML = `{ }`;
-        packet.style.cssText = `
-            position: absolute;
-            background-color: var(--dark-gray);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-size: 10px;
-            font-family: monospace;
-            top: ${componentPositions[0].top}px;
-            left: ${componentPositions[0].left - 50}px;
-            opacity: 0;
-            z-index: 10;
-            box-shadow: 0 0 8px rgba(95, 219, 167, 0.3);
-            transform: translateX(-50%) translateY(-50%);
-            transition: all 0.5s ease-in-out;
-        `;
+        
+        // Position differently based on device type
+        if (isMobile) {
+            // Position for mobile (vertical flow)
+            packet.style.cssText = `
+                position: absolute;
+                background-color: var(--dark-gray);
+                color: var(--accent-color);
+                border: 1px solid var(--accent-color);
+                border-radius: 4px;
+                padding: 2px 6px;
+                font-size: 10px;
+                font-family: monospace;
+                top: ${componentPositions[0].top - 40}px;
+                left: ${componentPositions[0].left}px;
+                opacity: 0;
+                z-index: 10;
+                box-shadow: 0 0 8px rgba(95, 219, 167, 0.3);
+                transform: translateX(-50%) translateY(-50%);
+                transition: all 0.5s ease-in-out;
+            `;
+        } else {
+            // Position for desktop (horizontal flow)
+            packet.style.cssText = `
+                position: absolute;
+                background-color: var(--dark-gray);
+                color: var(--accent-color);
+                border: 1px solid var(--accent-color);
+                border-radius: 4px;
+                padding: 2px 6px;
+                font-size: 10px;
+                font-family: monospace;
+                top: ${componentPositions[0].top}px;
+                left: ${componentPositions[0].left - 50}px;
+                opacity: 0;
+                z-index: 10;
+                box-shadow: 0 0 8px rgba(95, 219, 167, 0.3);
+                transform: translateX(-50%) translateY(-50%);
+                transition: all 0.5s ease-in-out;
+            `;
+        }
         
         container.appendChild(packet);
         
@@ -274,7 +306,11 @@ function initDataFlow() {
             
             // Move to API Gateway and process
             setTimeout(() => {
-                packet.style.left = `${componentPositions[0].left}px`;
+                if (isMobile) {
+                    packet.style.top = `${componentPositions[0].top}px`;
+                } else {
+                    packet.style.left = `${componentPositions[0].left}px`;
+                }
                 document.getElementById('api-gateway').classList.add('processing');
                 
                 setTimeout(() => {
@@ -284,7 +320,11 @@ function initDataFlow() {
                     
                     // Move to Message Broker and process
                     setTimeout(() => {
-                        packet.style.left = `${componentPositions[1].left}px`;
+                        if (isMobile) {
+                            packet.style.top = `${componentPositions[1].top}px`;
+                        } else {
+                            packet.style.left = `${componentPositions[1].left}px`;
+                        }
                         document.getElementById('queue').classList.add('processing');
                         
                         setTimeout(() => {
@@ -294,7 +334,11 @@ function initDataFlow() {
                             
                             // Move to Worker and process
                             setTimeout(() => {
-                                packet.style.left = `${componentPositions[2].left}px`;
+                                if (isMobile) {
+                                    packet.style.top = `${componentPositions[2].top}px`;
+                                } else {
+                                    packet.style.left = `${componentPositions[2].left}px`;
+                                }
                                 document.getElementById('worker').classList.add('processing');
                                 
                                 setTimeout(() => {
@@ -304,7 +348,11 @@ function initDataFlow() {
                                     
                                     // Move to Cache and process
                                     setTimeout(() => {
-                                        packet.style.left = `${componentPositions[3].left}px`;
+                                        if (isMobile) {
+                                            packet.style.top = `${componentPositions[3].top}px`;
+                                        } else {
+                                            packet.style.left = `${componentPositions[3].left}px`;
+                                        }
                                         document.getElementById('cache').classList.add('processing');
                                         
                                         setTimeout(() => {
@@ -314,7 +362,11 @@ function initDataFlow() {
                                             
                                             // Move to DB and process
                                             setTimeout(() => {
-                                                packet.style.left = `${componentPositions[4].left}px`;
+                                                if (isMobile) {
+                                                    packet.style.top = `${componentPositions[4].top}px`;
+                                                } else {
+                                                    packet.style.left = `${componentPositions[4].left}px`;
+                                                }
                                                 document.getElementById('db').classList.add('processing');
                                                 
                                                 setTimeout(() => {
@@ -344,11 +396,25 @@ function initDataFlow() {
         }, 200);
     }
     
+    // Clear any existing interval
+    if (dataFlowInterval) {
+        clearInterval(dataFlowInterval);
+    }
+    
     // Create data packets at interval
     dataFlowInterval = setInterval(createDataPacket, 4000);
     
     // Create the first packet right away
     createDataPacket();
+    
+    // Handle window resize to ensure animation positions are updated
+    window.addEventListener('resize', () => {
+        if (dataFlowInterval) {
+            clearInterval(dataFlowInterval);
+            dataFlowInterval = setInterval(createDataPacket, 4000);
+            createDataPacket();
+        }
+    });
 }
 
 // Show component details in panel
