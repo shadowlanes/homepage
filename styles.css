@@ -368,25 +368,31 @@ main {
     border-left: 8px solid var(--light-gray);
 }
 
+/* Remove old data-flow styling */
 .data-flow {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: repeating-linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0),
-        rgba(95, 219, 167, 0.3) 20px,
-        rgba(0, 0, 0, 0) 40px
-    );
-    z-index: 1;
-    animation: dataFlow 2s linear infinite;
+    display: none; /* Hide the old data flow element */
 }
 
 @keyframes dataFlow {
     0% { background-position: 0 0; }
     100% { background-position: 40px 0; }
+}
+
+/* Processing animation for nodes */
+.node.processing {
+    animation: processing-pulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes processing-pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); box-shadow: 0 0 15px rgba(95, 219, 167, 0.6); }
+}
+
+/* Data packet styling */
+.data-packet {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
 }
 
 /* Node pulse animation */

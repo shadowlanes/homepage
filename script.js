@@ -212,49 +212,143 @@ let dataFlowInterval = null;
 
 // Initialize data flow animation
 function initDataFlow() {
-    // Visual data package animation
+    // Get the positions of each component for the animation waypoints
+    function getComponentPositions() {
+        const positions = [];
+        const components = ['api-gateway', 'queue', 'worker', 'cache', 'db'];
+        
+        components.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                const rect = element.getBoundingClientRect();
+                const containerRect = document.querySelector('.system-container').getBoundingClientRect();
+                
+                // Get position relative to container
+                const relativePos = {
+                    left: rect.left - containerRect.left + rect.width / 2,
+                    top: rect.top - containerRect.top + rect.height / 2
+                };
+                
+                positions.push(relativePos);
+            }
+        });
+        
+        return positions;
+    }
+    
+    // Create and animate a single data packet
     function createDataPacket() {
         const container = document.querySelector('.system-container');
+        const componentPositions = getComponentPositions();
+        
+        // Create the data packet element
         const packet = document.createElement('div');
         packet.className = 'data-packet';
+        
+        // Initial styling - JSON-like appearance
+        packet.innerHTML = `{ }`;
         packet.style.cssText = `
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            top: ${50 + (Math.random() * 10 - 5)}%;
-            left: 0;
-            opacity: 0.8;
-            z-index: 3;
-            box-shadow: 0 0 8px var(--accent-color);
-            animation: movePacket 6s linear forwards;
+            background-color: var(--dark-gray);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-family: monospace;
+            top: ${componentPositions[0].top}px;
+            left: ${componentPositions[0].left - 50}px;
+            opacity: 0;
+            z-index: 10;
+            box-shadow: 0 0 8px rgba(95, 219, 167, 0.3);
+            transform: translateX(-50%) translateY(-50%);
+            transition: all 0.5s ease-in-out;
         `;
         
         container.appendChild(packet);
         
-        // Remove packet after animation completes
+        // Animation sequence
         setTimeout(() => {
-            packet.remove();
-        }, 6000);
+            // Fade in at start position
+            packet.style.opacity = '1';
+            
+            // Move to API Gateway and process
+            setTimeout(() => {
+                packet.style.left = `${componentPositions[0].left}px`;
+                document.getElementById('api-gateway').classList.add('processing');
+                
+                setTimeout(() => {
+                    packet.innerHTML = `{"req":true}`;
+                    packet.style.color = 'var(--api-gateway-color)';
+                    document.getElementById('api-gateway').classList.remove('processing');
+                    
+                    // Move to Message Broker and process
+                    setTimeout(() => {
+                        packet.style.left = `${componentPositions[1].left}px`;
+                        document.getElementById('queue').classList.add('processing');
+                        
+                        setTimeout(() => {
+                            packet.innerHTML = `{"event":1}`;
+                            packet.style.color = 'var(--queue-color)';
+                            document.getElementById('queue').classList.remove('processing');
+                            
+                            // Move to Worker and process
+                            setTimeout(() => {
+                                packet.style.left = `${componentPositions[2].left}px`;
+                                document.getElementById('worker').classList.add('processing');
+                                
+                                setTimeout(() => {
+                                    packet.innerHTML = `{"data":{}}`;
+                                    packet.style.color = 'var(--worker-color)';
+                                    document.getElementById('worker').classList.remove('processing');
+                                    
+                                    // Move to Cache and process
+                                    setTimeout(() => {
+                                        packet.style.left = `${componentPositions[3].left}px`;
+                                        document.getElementById('cache').classList.add('processing');
+                                        
+                                        setTimeout(() => {
+                                            packet.innerHTML = `{"cached":1}`;
+                                            packet.style.color = 'var(--cache-color)';
+                                            document.getElementById('cache').classList.remove('processing');
+                                            
+                                            // Move to DB and process
+                                            setTimeout(() => {
+                                                packet.style.left = `${componentPositions[4].left}px`;
+                                                document.getElementById('db').classList.add('processing');
+                                                
+                                                setTimeout(() => {
+                                                    packet.innerHTML = `{"id":123}`;
+                                                    packet.style.color = 'var(--db-color)';
+                                                    document.getElementById('db').classList.remove('processing');
+                                                    
+                                                    // Final fade out
+                                                    setTimeout(() => {
+                                                        packet.style.opacity = '0';
+                                                        
+                                                        // Remove packet after animation completes
+                                                        setTimeout(() => {
+                                                            packet.remove();
+                                                        }, 500);
+                                                    }, 400);
+                                                }, 400);
+                                            }, 500);
+                                        }, 400);
+                                    }, 500);
+                                }, 400);
+                            }, 500);
+                        }, 400);
+                    }, 500);
+                }, 400);
+            }, 200);
+        }, 200);
     }
     
     // Create data packets at interval
-    dataFlowInterval = setInterval(createDataPacket, 1500);
+    dataFlowInterval = setInterval(createDataPacket, 4000);
     
-    // Add animation to CSS - adjust for 5 components
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes movePacket {
-            0% { left: 0; transform: scale(1); }
-            20% { left: 20%; transform: scale(1.2); }
-            40% { left: 40%; transform: scale(1); }
-            60% { left: 60%; transform: scale(1.2); }
-            80% { left: 80%; transform: scale(1); }
-            100% { left: 100%; transform: scale(0); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
+    // Create the first packet right away
+    createDataPacket();
 }
 
 // Show component details in panel
