@@ -1,8 +1,34 @@
 // Component Data: Technical details and experiences
 const componentData = {
+    "api-gateway": {
+        title: "API Gateway",
+        overview: "API Gateways serve as the entry point to a system, handling routing, authentication, rate limiting, and providing a unified interface for various backend services.",
+        technologies: {
+            title: "Technologies I've Used",
+            list: [
+                { name: "AWS API Gateway", desc: "For serverless API management and integration" },
+                { name: "Kong", desc: "For open-source API gateway with plugins ecosystem" },
+                { name: "Express Gateway", desc: "For Node.js microservices API Gateway" },
+                { name: "Spring Cloud Gateway", desc: "For Java-based reactive API Gateway" }
+            ]
+        },
+        warStories: {
+            title: "War Stories",
+            content: "When migrating from a monolithic API to a microservices architecture, we faced significant latency issues at the gateway layer. I implemented request batching and an intelligent caching strategy that reduced API latency by 70% while maintaining the flexibility of our microservices deployment.",
+        },
+        tradeOffs: {
+            title: "Engineering Trade-offs",
+            content: "API Gateways create a central point of control but can become bottlenecks. I've implemented a federated gateway pattern where teams manage their own gateway instances with shared authentication middleware, balancing governance and autonomy.",
+        },
+        metrics: {
+            latency: 45,
+            throughput: 85,
+            complexity: 70
+        }
+    },
     queue: {
-        title: "Message Queue",
-        overview: "Message queues provide asynchronous communication and decouple system components, enabling scalable and resilient distributed architectures.",
+        title: "Message Broker",
+        overview: "Message brokers facilitate asynchronous communication between system components, enabling reliable event streaming, decoupling of services, and building resilient distributed architectures.",
         technologies: {
             title: "Technologies I've Used",
             list: [
@@ -14,11 +40,11 @@ const componentData = {
         },
         warStories: {
             title: "War Stories",
-            content: "During a Black Friday sale, our primary queue hit capacity limits, causing a cascading failure. I implemented a dynamic scaling solution with back-pressure mechanisms that automatically provisioned resources based on queue depth. This saved us during the next sale when traffic was 3x higher than expected.",
+            content: "During a Black Friday sale, our primary message broker hit capacity limits, causing a cascading failure. I implemented a dynamic scaling solution with back-pressure mechanisms that automatically provisioned resources based on queue depth. This saved us during the next sale when traffic was 3x higher than expected.",
         },
         tradeOffs: {
             title: "Engineering Trade-offs",
-            content: "Queues introduce latency but provide fault tolerance. I've balanced these by implementing a hybrid approach: critical paths use synchronous processing while maintaining asynchronous queues for fault tolerance and load shedding during traffic spikes.",
+            content: "Message brokers introduce latency but provide fault tolerance. I've balanced these by implementing a hybrid approach: critical paths use synchronous processing while maintaining asynchronous messaging for fault tolerance and load shedding during traffic spikes.",
         },
         metrics: {
             latency: 35,
@@ -216,7 +242,7 @@ function initDataFlow() {
     // Create data packets at interval
     dataFlowInterval = setInterval(createDataPacket, 1500);
     
-    // Add animation to CSS
+    // Add animation to CSS - adjust for 5 components
     const style = document.createElement('style');
     style.innerHTML = `
         @keyframes movePacket {
@@ -234,6 +260,11 @@ function initDataFlow() {
 // Show component details in panel
 function showComponentDetails(componentId) {
     const data = componentData[componentId];
+    if (!data) {
+        console.error('No data found for component:', componentId);
+        return;
+    }
+    
     activeComponent = componentId;
     
     // Update panel title with more descriptive content
