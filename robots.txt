@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Allow all crawlers to access all content
+Sitemap: https://shadowlanes.com/sitemap.xml
+
+# Add a small crawl delay to prevent overwhelming your server
+Crawl-delay: 10

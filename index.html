@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumyadeep Das | Computer Engineer & Backend Systems Expert</title>
+    <meta name="description" content="Experienced computer engineer specializing in backend systems, message queues, worker processing, databases, and caching solutions.">
+    <meta name="keywords" content="Soumyadeep Das, computer engineer, backend systems, message queue, database, cache, distributed systems">
+    <meta name="author" content="Soumyadeep Das">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shadowlanes.com/">
+    <meta property="og:title" content="Soumyadeep Das | Computer Engineer">
+    <meta property="og:description" content="Experienced computer engineer specializing in backend systems, message queues, worker processing, databases, and caching solutions.">
+    <meta property="og:image" content="https://shadowlanes.com/profile.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://shadowlanes.com/">
+    <meta name="twitter:title" content="Soumyadeep Das | Computer Engineer">
+    <meta name="twitter:description" content="Experienced computer engineer specializing in backend systems, message queues, worker processing, databases, and caching solutions.">
+    <meta name="twitter:image" content="https://shadowlanes.com/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://shadowlanes.com/">
+</head>
+<body>
+    <header role="banner">
+        <div class="header-content">
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link" aria-label="Email"><i class="fas fa-envelope"></i><span class="sr-only">Email</span></a>
+                <a href="https://linkedin.com/in/dasdeepsoumya" target="_blank" class="contact-link" aria-label="LinkedIn Profile" rel="noopener"><i class="fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+                <a href="https://github.com/shadowlanes" target="_blank" class="contact-link" aria-label="GitHub Profile" rel="noopener"><i class="fab fa-github"></i><span class="sr-only">GitHub</span></a>
+                <a href="resume.pdf" target="_blank" class="cv-link" aria-label="Download CV">CV</a>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        <div class="intro-container">
+            <h1 id="name">Soumyadeep Das</h1>
+            <div class="type-container">
+                <p id="title">Computer Engineer</p>
+            </div>
+            <button id="about-btn" class="terminal-btn" aria-label="Show About Me section">About Me</button>
+        </div>
+        
+        <section id="interactive-system" class="hidden" aria-label="Backend System Components">
+            <h2 class="sr-only">Backend Systems Experience</h2>
+            <div class="system-container">
+                <div class="node-container">
+                    <div class="node" id="queue" tabindex="0" role="button" aria-label="Message Queue Component">
+                        <div class="icon"><i class="fas fa-tasks" aria-hidden="true"></i></div>
+                        <div class="label">Queue</div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    
+                    <div class="arrow right-arrow" aria-hidden="true"></div>
+                    
+                    <div class="node" id="worker" tabindex="0" role="button" aria-label="Worker Processing Component">
+                        <div class="icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
+                        <div class="label">Worker</div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    
+                    <div class="arrow right-arrow" aria-hidden="true"></div>
+                    
+                    <div class="node" id="db" tabindex="0" role="button" aria-label="Database Layer Component">
+                        <div class="icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+                        <div class="label">DB</div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    
+                    <div class="arrow right-arrow" aria-hidden="true"></div>
+                    
+                    <div class="node" id="cache" tabindex="0" role="button" aria-label="Cache Layer Component">
+                        <div class="icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                        <div class="label">Cache</div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    
+                    <div class="arrow right-arrow" aria-hidden="true"></div>
+                    
+                    <div class="node" id="result" tabindex="0" role="button" aria-label="Result Delivery Component">
+                        <div class="icon"><i class="fas fa-check-circle" aria-hidden="true"></i></div>
+                        <div class="label">Result</div>
+                        <div class="node-pulse"></div>
+                    </div>
+                </div>
+                <div class="data-flow"></div>
+            </div>
+            
+            <div class="system-description">
+                <p>Hover or click components to explore my experience with backend systems.</p>
+            </div>
+        </section>
+
+        <div id="info-panel" role="dialog" aria-labelledby="component-title" aria-hidden="true">
+            <div class="panel-header">
+                <h3 id="component-title">System Component</h3>
+                <button class="close-btn" aria-label="Close panel">&times;</button>
+            </div>
+            <div class="panel-body">
+                <div class="tabs" role="tablist">
+                    <button class="tab-btn active" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview">Overview</button>
+                    <button class="tab-btn" data-tab="tech" role="tab" aria-selected="false" aria-controls="tech">Technologies</button>
+                    <button class="tab-btn" data-tab="stories" role="tab" aria-selected="false" aria-controls="stories">War Stories</button>
+                    <button class="tab-btn" data-tab="trade-offs" role="tab" aria-selected="false" aria-controls="trade-offs">Trade-offs</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="overview" role="tabpanel" aria-labelledby="overview-tab"></div>
+                    <div class="tab-pane" id="tech" role="tabpanel" aria-labelledby="tech-tab"></div>
+                    <div class="tab-pane" id="stories" role="tabpanel" aria-labelledby="stories-tab"></div>
+                    <div class="tab-pane" id="trade-offs" role="tabpanel" aria-labelledby="trade-offs-tab"></div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-label">Latency</span>
+                        <div class="metric-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="metric-fill" id="latency-fill"></div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Throughput</span>
+                        <div class="metric-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="metric-fill" id="throughput-fill"></div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Complexity</span>
+                        <div class="metric-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="metric-fill" id="complexity-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Soumyadeep Das</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Schema.org structured data for improved SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Soumyadeep Das",
+        "jobTitle": "Computer Engineer",
+        "url": "https://shadowlanes.com",
+        "sameAs": [
+            "https://linkedin.com/in/dasdeepsoumya",
+            "https://github.com/shadowlanes"
+        ],
+        "knowsAbout": [
+            "Message Queues",
+            "Worker Processing",
+            "Database Systems",
+            "Caching Solutions",
+            "Distributed Systems",
+            "Backend Architecture"
+        ],
+        "skills": [
+            "RabbitMQ", "Kafka", "AWS SQS", "Redis", 
+            "PostgreSQL", "MongoDB", "Cassandra", 
+            "Celery", "Sidekiq", "AWS Lambda"
+        ]
+    }
+    </script>
+</body>
+</html>
