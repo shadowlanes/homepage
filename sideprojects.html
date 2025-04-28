@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Projects | Soumyadeep Das</title>
+    <meta name="description" content="Side projects by Soumyadeep Das - Computer engineer and backend systems expert">
+    <meta name="author" content="Soumyadeep Das">
+    
+    <!-- Stylesheets - Minimal styling -->
+    <style>
+        :root {
+            --background-color: #0c0c0c;
+            --text-color: #0f0;
+            --link-color: #00c3ff;
+            --hover-color: #5fdba7;
+            --card-bg: #1d1d1d;
+            --light-gray: #999;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 2rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--hover-color);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .project-desc {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="back-link">← Back to home</a>
+        <h1>Side Projects</h1>
+        <p>A collection of personal projects I've worked on</p>
+    </header>
+    
+    <main>
+        <div class="projects">
+            <div class="project-card">
+                <h2 class="project-title">Homepage</h2>
+                <p class="project-desc">Personal website showcasing my experience with backend systems and engineering expertise.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/homepage" target="_blank" rel="noopener">GitHub</a>
+                    <a href="/" target="_blank" rel="noopener">Live Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">Recr-Monkey</h2>
+                <p class="project-desc">Track all your recurring payments and subscriptions to manage finances better.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/recr-monkey" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://recr-monkey.shadowlanes.com" target="_blank" rel="noopener">Live Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">WhatsTheirTime</h2>
+                <p class="project-desc">A small app that shows the current time for friends across different time zones.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/whatstheirtime" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://whatstheirtime.shadowlanes.com" target="_blank" rel="noopener">Live Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">VisaPower</h2>
+                <p class="project-desc">Check which countries are accessible via your passport and current visas for travel planning.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/visapower" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://visapower.shadowlanes.com" target="_blank" rel="noopener">Live Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">ENBD Parser</h2>
+                <p class="project-desc">A utility that parses Emirates NBD bank statements and generates CSV files for easier analysis.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/enbd-parser" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://enbd-parser.shadowlanes.com" target="_blank" rel="noopener">Live Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">ScriptRunner</h2>
+                <p class="project-desc">Tool to run multiple SQL scripts against a database, ideal for deployment scenarios.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/ScriptRunner" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h2 class="project-title">SVN Commit Analyzer</h2>
+                <p class="project-desc">Analyzes commit messages in Subversion to check against organizational rules and formats.</p>
+                <div class="project-links">
+                    <a href="https://github.com/shadowlanes/svn-commit-analyzer" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Soumyadeep Das</p>
+    </footer>
+</body>
+</html>
