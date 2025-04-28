@@ -7,18 +7,11 @@
     <meta name="description" content="Side projects by Soumyadeep Das - Computer engineer and backend systems expert">
     <meta name="author" content="Soumyadeep Das">
     
-    <!-- Stylesheets - Minimal styling -->
+    <!-- Import theme first, then define specific styles for this page -->
+    <link rel="stylesheet" href="theme.css">
+    
+    <!-- Stylesheets - Specific styles for side projects page -->
     <style>
-        :root {
-            --background-color: #0c0c0c;
-            --text-color: #0f0;
-            --link-color: #00c3ff;
-            --hover-color: #5fdba7;
-            --card-bg: #1d1d1d;
-            --light-gray: #999;
-            --font-mono: 'Courier New', Courier, monospace;
-        }
-        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,6 +23,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
+            background-image: radial-gradient(circle at 10% 20%, var(--dark-gray) 0%, var(--background-color) 80%);
             padding: 2rem 1rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -38,22 +32,23 @@
         header {
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-highlight);
         }
         
         h1 {
             font-size: 2rem;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
         
         a {
-            color: var(--link-color);
+            color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
         
         a:hover {
-            color: var(--hover-color);
+            color: var(--secondary-color);
         }
         
         .back-link {
@@ -68,22 +63,23 @@
         }
         
         .project-card {
-            background-color: var(--card-bg);
+            background-color: var(--dark-gray);
             border-radius: 5px;
             padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-highlight);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 5px var(--highlight-glow);
+            border-color: var(--primary-color);
         }
         
         .project-title {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            color: var(--text-color);
+            color: var(--primary-color);
         }
         
         .project-desc {

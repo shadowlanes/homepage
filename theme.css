@@ -1,0 +1,74 @@
+/* 
+ * THEME: CYBERPUNK
+ * Color palette definition for the website
+ * This file contains variables that define the site's appearance
+ * Change this file to update the theme across all pages
+ */
+
+:root {
+    /* Main color palette */
+    --primary-color: #03F7EB; /* Fluorescent cyan */
+    --secondary-color: #00B295; /* Jungle green */
+    --accent-color: #AB2346; /* Amaranth purple */
+    --background-color: #191516; /* Licorice */
+    --text-color: #C9DAEA; /* Columbia blue */
+    
+    /* UI element colors */
+    --dark-gray: #252122; /* Slightly lighter than background */
+    --light-gray: #C9DAEA; /* Columbia blue */
+    
+    /* Component-specific colors */
+    --api-gateway-color: #03F7EB; /* Fluorescent cyan */
+    --queue-color: #00B295; /* Jungle green */
+    --worker-color: #C9DAEA; /* Columbia blue */
+    --db-color: #AB2346; /* Amaranth purple */
+    --cache-color: #03F7EB; /* Fluorescent cyan */
+    --result-color: #00B295; /* Jungle green */
+    
+    /* Common visual effects */
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+    
+    /* Typography */
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    
+    /* Gradients for metric bars */
+    --latency-gradient: linear-gradient(to right, #02a59c, #03F7EB);
+    --throughput-gradient: linear-gradient(to right, #007a66, #00B295);
+    --complexity-gradient: linear-gradient(to right, #7c1932, #AB2346);
+    
+    /* Animation colors */
+    --highlight-glow: rgba(3, 247, 235, 0.3);
+    --border-highlight: rgba(3, 247, 235, 0.15);
+}
+
+/* Alternative themes can be added below as theme classes */
+
+/* 
+ * To switch themes, add the theme class to the html or body element
+ * Example: <html class="theme-dark"> or <body class="theme-light">
+ */
+
+/*
+.theme-light {
+    --primary-color: #0077B6;
+    --secondary-color: #00B4D8;
+    --accent-color: #FF5A5F;
+    --background-color: #F8F9FA;
+    --text-color: #212529;
+    --dark-gray: #E9ECEF;
+    --light-gray: #6C757D;
+    --api-gateway-color: #0077B6;
+    --queue-color: #00B4D8;
+    --worker-color: #6C757D;
+    --db-color: #FF5A5F;
+    --cache-color: #0077B6;
+    --result-color: #00B4D8;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --highlight-glow: rgba(0, 183, 255, 0.2);
+    --border-highlight: rgba(0, 119, 182, 0.2);
+    --latency-gradient: linear-gradient(to right, #0077B6, #00B4D8);
+    --throughput-gradient: linear-gradient(to right, #0096C7, #48CAE4);
+    --complexity-gradient: linear-gradient(to right, #D00000, #FF5A5F);
+}
+*/

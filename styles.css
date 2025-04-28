@@ -1,23 +1,7 @@
-/* Base styling and variables */
-:root {
-    --primary-color: #03F7EB; /* Fluorescent cyan */
-    --secondary-color: #00B295; /* Jungle green */
-    --accent-color: #AB2346; /* Amaranth purple */
-    --background-color: #191516; /* Licorice */
-    --text-color: #C9DAEA; /* Columbia blue */
-    --dark-gray: #252122; /* Slightly lighter than background */
-    --light-gray: #C9DAEA; /* Columbia blue */
-    --api-gateway-color: #03F7EB; /* Fluorescent cyan */
-    --queue-color: #00B295; /* Jungle green */
-    --worker-color: #C9DAEA; /* Columbia blue */
-    --db-color: #AB2346; /* Amaranth purple */
-    --cache-color: #03F7EB; /* Fluorescent cyan */
-    --result-color: #00B295; /* Jungle green */
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    --transition: all 0.3s ease;
-    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-}
+/* Import the theme definition */
+@import 'theme.css';
 
+/* Base styling */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,7 +13,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
-    background-image: radial-gradient(circle at 10% 20%, #252122 0%, #191516 80%);
+    background-image: radial-gradient(circle at 10% 20%, #252122 0%, var(--background-color) 80%);
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -45,7 +29,7 @@ h1, h2, h3 {
 h1 {
     font-size: 3.5rem;
     color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(3, 247, 235, 0.3);
+    text-shadow: 0 0 10px var(--highlight-glow);
 }
 
 h2 {
@@ -135,7 +119,7 @@ header {
     box-shadow: var(--shadow);
     z-index: 1;
     border-radius: 3px;
-    border: 1px solid rgba(3, 247, 235, 0.1);
+    border: 1px solid var(--border-highlight);
 }
 
 .dropdown-content a {
@@ -291,7 +275,7 @@ main {
     border-radius: 10px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(3, 247, 235, 0.15);
+    border: 1px solid var(--border-highlight);
 }
 
 .node-container {
@@ -376,7 +360,7 @@ main {
 
 .node:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(3, 247, 235, 0.2);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--highlight-glow);
 }
 
 .node:hover::before {
@@ -524,7 +508,7 @@ main {
     background-color: var(--dark-gray);
     border-radius: 10px;
     border: 1px solid rgba(3, 247, 235, 0.2);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(3, 247, 235, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--highlight-glow);
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
@@ -545,7 +529,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(3, 247, 235, 0.15);
+    border-bottom: 1px solid var(--border-highlight);
 }
 
 .close-btn {
@@ -574,7 +558,7 @@ main {
 
 .tabs {
     display: flex;
-    border-bottom: 1px solid rgba(3, 247, 235, 0.15);
+    border-bottom: 1px solid var(--border-highlight);
     margin-bottom: 1rem;
 }
 
@@ -621,7 +605,7 @@ main {
 .panel-footer {
     padding: 1rem 1.5rem;
     background-color: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(3, 247, 235, 0.15);
+    border-top: 1px solid var(--border-highlight);
 }
 
 .metrics {
@@ -652,17 +636,17 @@ main {
 }
 
 #latency-fill {
-    background: linear-gradient(to right, #02a59c, #03F7EB);
+    background: var(--latency-gradient);
     width: 0;
 }
 
 #throughput-fill {
-    background: linear-gradient(to right, #007a66, #00B295);
+    background: var(--throughput-gradient);
     width: 0;
 }
 
 #complexity-fill {
-    background: linear-gradient(to right, #7c1932, #AB2346);
+    background: var(--complexity-gradient);
     width: 0;
 }
 
