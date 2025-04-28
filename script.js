@@ -1,5 +1,5 @@
 // Import component data from separate file
-import { componentData } from './componentData.js';
+import { componentData } from './jobExp.js';
 
 // DOM Elements
 const nodes = document.querySelectorAll('.node');
